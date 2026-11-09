@@ -114,3 +114,78 @@ if __name__ == "__main__":
     explore_dataset_structure(df_raw)
     perform_data_quality_checks(df_raw)
     compute_descriptive_statistics(df_raw)
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+def clean_data(df: pd.DataFrame, drop_duplicates: bool = True) -> pd.DataFrame:
+    """
+    Cleans the raw dataframe:
+    - Removes duplicate rows
+    - Drops columns with excessive missing values (>90%)
+    - Drops leakage columns (columns that reveal reservation status ahead of time)
+    - Imputes missing values for agent, country, and children
+    """
+    df_clean = df.copy()
+    
+    # 1. Handle duplicate entries
+    if drop_duplicates:
+        df_clean = df_clean.drop_duplicates()
+        
+    # 2. Drop columns with >90% missing values
+    if "company" in df_clean.columns:
+        df_clean = df_clean.drop(columns=["company"])
+        
+    # 3. Drop data leakage columns that directly expose cancellation status
+    leakage_cols = ["reservation_status", "reservation_status_date"]
+    df_clean = df_clean.drop(columns=[col for col in leakage_cols if col in df_clean.columns])
+    
+    # 4. Impute missing values
+    if "agent" in df_clean.columns:
+        df_clean["agent"] = df_clean["agent"].fillna(0)
+    if "country" in df_clean.columns:
+        df_clean["country"] = df_clean["country"].fillna("Unknown")
+    if "children" in df_clean.columns:
+        df_clean["children"] = df_clean["children"].fillna(0)
+        
+    return df_clean
+
+
+def preprocess_and_split(df: pd.DataFrame, target_col: str = "is_canceled"):
+    """
+    Encodes categorical variables, standardizes numerical features,
+    and performs an 80/20 stratified train-test split.
+    """
+    # Clean the dataset first
+    df_clean = clean_data(df)
+    
+    # Separate features (X) and target label (y)
+    X = df_clean.drop(columns=[target_col])
+    y = df_clean[target_col]
+    
+    # One-hot encode categorical features (convert strings to numeric dummy columns)
+    X_encoded = pd.get_dummies(X, drop_first=True)
+    
+    # 80/20 Stratified train-test split (stratify preserves target class ratio)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X_encoded, y, test_size=0.2, random_state=42, stratify=y
+    )
+    
+    # Feature scaling: fit scaler strictly on training set to avoid data leakage
+    scaler = StandardScaler()
+    X_train_scaled = pd.DataFrame(
+        scaler.fit_transform(X_train), 
+        columns=X_train.columns, 
+        index=X_train.index
+    )
+    X_test_scaled = pd.DataFrame(
+        scaler.transform(X_test), 
+        columns=X_test.columns, 
+        index=X_test.index
+    )
+    
+    print(f"[INFO] Preprocessing complete.")
+    print(f"[INFO] Training set shape: {X_train_scaled.shape}")
+    print(f"[INFO] Test set shape:     {X_test_scaled.shape}")
+    
+    return X_train_scaled, X_test_scaled, y_train, y_test
