@@ -68,8 +68,7 @@ def evaluate_model(model, X_eval: pd.DataFrame, y_eval: pd.Series, dataset_name:
     print(f"F1-Score:         {f1:.4f}")
     print(f"ROC-AUC:          {roc_auc:.4f}")
     print("=" * 60)
-    print("\nDetailed Classification Report:")
-    print(classification_report(y_eval, y_pred))
+    
     
     return {
         "accuracy": acc,
