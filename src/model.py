@@ -7,7 +7,6 @@ Lead: Model Development (Member 3)
 
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from src.data_prep import load_dataset, preprocess_and_split
 
 
 def train_logistic_regression(X_train: pd.DataFrame, y_train: pd.Series) -> LogisticRegression:
@@ -20,8 +19,3 @@ def train_logistic_regression(X_train: pd.DataFrame, y_train: pd.Series) -> Logi
     print("[INFO] Model training completed successfully.")
     return model
 
-
-if __name__ == "__main__":
-    df = load_dataset()
-    X_train, X_test, y_train, y_test = preprocess_and_split(df)
-    model = train_logistic_regression(X_train, y_train)
