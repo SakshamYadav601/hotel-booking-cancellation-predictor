@@ -9,12 +9,12 @@ Predicts whether a hotel reservation will be canceled using Logistic Regression 
 | :--- | :--- | :--- | :--- |
 | Saksham Yadav | 2026MCB1562 | @SakshamYadav601 | Documentation Lead |
 | Chandan Kumar | 2026EEB1337 | @chandan-rpr | Video Lead |
-| Sejpal Aum Pareshbai | 2026AIB1079 | @[handle3] | PPT Lead |
-| Malavath Yaswanth | 2026AIB1054 | @[handle4] | Execution Lead |
+| Sejpal Aum Pareshbai | 2026AIB1079 | @Aum-Sejpal-iitrpr | PPT Lead |
+| Malavath Yaswanth | 2026AIB1054 | @Myasvanth2008 | Execution Lead |
 
 *All four members contributed code and committed from their respective accounts.*
 
-## 2. Project Structure
+
 
 ## 2. Project Structure
 
@@ -38,7 +38,7 @@ hotel-cancellation-predictor/
 ```
 ## 3. Setup
 
-Tested on Python 3.10 and 3.11 (Windows, macOS, Ubuntu).
+Tested on Python 3.10 and 3.11 (Windows)
 
 ```bash
 git clone [https://github.com/SakshamYadav601/hotel-cancellation-predictor.git](https://github.com/SakshamYadav601/hotel-cancellation-predictor.git)
@@ -49,7 +49,7 @@ python -m venv venv
 Activate the virtual environment:
 * **Windows (PowerShell):** `venv\Scripts\Activate.ps1`
 * **Windows (CMD):** `venv\Scripts\activate.bat`
-* **macOS / Linux:** `source venv/bin/activate`
+
 
 Install pinned dependencies:
 ```bash
