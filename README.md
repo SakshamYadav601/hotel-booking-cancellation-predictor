@@ -60,7 +60,7 @@ pip install -r requirements.txt
 
 1. Run the main pipeline:
    ```bash
-   python src/main.py
+   python -m src.main
    ```
 2. The script computes summary statistics, trains the Logistic Regression model, prints train and test classification metrics, and saves 3 plots in `outputs/`.
 3. Expected runtime: under 30 seconds.
