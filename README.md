@@ -43,8 +43,8 @@ hotel-cancellation-predictor/
 - **Cross-Platform Support:** The pipeline relies entirely on standard cross-platform libraries (`pathlib`, `scikit-learn`, `pandas`). Virtual environment commands for both Windows (PowerShell/Bash) and Unix-based systems (macOS/Linux) are provided in the setup instructions.
 
 ```bash
-git clone https://github.com/SakshamYadav601/hotel-cancellation-predictor.git
-cd hotel-cancellation-predictor
+git clone https://github.com/SakshamYadav601/hotel-booking-cancellation-predictor
+cd hotel-booking-cancellation-predictor
 python -m venv venv
 ```
 
