@@ -38,18 +38,25 @@ hotel-cancellation-predictor/
 ```
 ## 3. Setup
 
-Tested on Python 3.10 and 3.11 (Windows)
+### Environment & Compatibility
+- **Primary Tested Environment:** Windows 11 (Python 3.10+)
+- **Cross-Platform Support:** The pipeline relies entirely on standard cross-platform libraries (`pathlib`, `scikit-learn`, `pandas`). Virtual environment commands for both Windows (PowerShell/Bash) and Unix-based systems (macOS/Linux) are provided in the setup instructions.
 
 ```bash
-git clone [https://github.com/SakshamYadav601/hotel-cancellation-predictor.git](https://github.com/SakshamYadav601/hotel-cancellation-predictor.git)
+git clone https://github.com/SakshamYadav601/hotel-cancellation-predictor.git
 cd hotel-cancellation-predictor
 python -m venv venv
 ```
 
 Activate the virtual environment:
-* **Windows (PowerShell):** `venv\Scripts\Activate.ps1`
-* **Windows (CMD):** `venv\Scripts\activate.bat`
 
+Windows (PowerShell): venv\Scripts\Activate.ps1
+
+Windows (CMD): venv\Scripts\activate.bat
+
+Windows (Git Bash): source venv/Scripts/activate
+
+macOS / Linux: source venv/bin/activate
 
 Install pinned dependencies:
 ```bash
@@ -67,21 +74,27 @@ pip install -r requirements.txt
 
 ## 5. Expected Output
 
+
 ```text
-[INFO] Loading data/hotel_bookings.csv (119390 rows, 32 columns)...
-[INFO] Numerical features summary statistics computed.
-[INFO] Preprocessing complete. Train shape: (95512, 28), Test shape: (23878, 28).
+=== STARTING HOTEL CANCELLATION PIPELINE ===
+[INFO] Loading data/hotel_bookings.csv...
+[INFO] Preprocessing complete.
+[INFO] Training set shape: (69916, 247)
+[INFO] Test set shape:     (17480, 247)
 [INFO] Training Logistic Regression model...
+[INFO] Model training completed successfully.
+
+[INFO] Evaluating model performance...
 
 Model Evaluation Metrics:
-------------------------------------------
-Training Set Accuracy : 0.8042
-Testing Set Accuracy  : 0.8016
-Testing Set Precision : 0.7681
-Testing Set Recall    : 0.6714
-Testing Set F1-Score  : 0.7165
-Testing Set ROC-AUC   : 0.8654
-------------------------------------------
+--------------------------------------------------
+Training Set Accuracy : 0.7984
+Testing Set Accuracy  : 0.7943
+Testing Set Precision : 0.6756
+Testing Set Recall    : 0.4845
+Testing Set F1-Score  : 0.5643
+Testing Set ROC-AUC   : 0.8439
+--------------------------------------------------
 
 Saved outputs/correlation_heatmap.png
 Saved outputs/confusion_matrix.png
@@ -89,7 +102,8 @@ Saved outputs/roc_curve.png
 Pipeline executed successfully.
 ```
 
-*(I will also add a screenshot of  terminal run here once code execution is finalized)*
+<img width="420" height="553" alt="image" src="https://github.com/user-attachments/assets/14219b2f-0a11-4584-8428-65cb02ce3346" />
+
 
 ## 6. Links
 
