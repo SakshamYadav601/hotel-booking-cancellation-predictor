@@ -1,7 +1,7 @@
 
 # Hotel Booking Cancellation Predictor
 
-Predicts whether a hotel reservation will be canceled using Logistic Regression classification.
+Predicts whether a hotel reservation will be cancelled using Logistic Regression classification.
 
 ## 1. Team and Roles
 
@@ -107,7 +107,7 @@ Pipeline executed successfully.
 
 ## 6. Links
 
-* **Slides (5):** `docs/Team_slides.pdf`
+* **Slides (5):** https://drive.google.com/drive/folders/1-lx9PyXzW4MvSUOdYeQouUK0W_MFb_S2?usp=drive_link and also in `docs/Team_slides.pdf`
 * **Video (5:00 max):** https://drive.google.com/drive/folders/1-lx9PyXzW4MvSUOdYeQouUK0W_MFb_S2?usp=drive_link
 
 ## 7. AI-use Disclosure
